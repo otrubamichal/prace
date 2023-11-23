@@ -28,8 +28,8 @@ nav ul {
       display: block;
       color: white;
       background-color: #30b93c;
-      border-radius: 25px 50px 0px;
-      padding: 1ex 2ex; 
+      border-radius: 25px;
+      padding: 2ex 3ex; 
       justify-content: center;
       float: right;
       
@@ -40,6 +40,7 @@ nav ul {
       height: auto;
       margin-bottom: 1em;
       border-radius: 20;
+      border: #bb8800;
       
 
 
@@ -54,6 +55,7 @@ nav ul {
     float:left;
     max-width: 10%;
     max-height: auto;
+    border: #30b93c;
   }
 
 footer {
