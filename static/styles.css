@@ -1,0 +1,101 @@
+body {
+  background-color: #eeeeee;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: 90px;
+  margin-right: 90px; }
+
+h1, h2, h3 {
+  clear: both;
+  margin-top: 5em;
+}
+
+h1 a {
+  color: #bb8800;
+}
+
+nav ul {
+  margin: 1ex auto;
+  margin-left: 150px;
+  text-align: center; 
+  font-weight: bold; }
+  nav ul li {
+    display: block;
+    width: 60%;
+    margin-top: 1ex;
+    }
+    nav ul li a {
+      display: block;
+      color: white;
+      background-color: #30b93c;
+      border-radius: 25px 50px 0px;
+      padding: 1ex 2ex; 
+      justify-content: center;
+      float: right;
+      
+  
+    }
+    img{
+      max-width: 50%;
+      height: auto;
+      margin-bottom: 1em;
+      border-radius: 20;
+      
+
+
+
+
+    }
+    nav ul li a:hover {
+      color: #324b72;
+      background-color: white;
+    }
+  nav img {
+    float:left;
+    max-width: 10%;
+    max-height: auto;
+  }
+
+footer {
+  padding: 0.1ex 2em;
+  margin-top: 2em;
+  border-top: solid 2px #FACC15;
+  background-color: #ecc8f0; }
+
+.login {
+  display: inline-block;
+  float: right;
+  width: 30%;
+  border: orange solid 2px;
+  padding: 1ex; }
+  
+.odd {
+    background-color: orange;
+}
+
+.even {
+    background-color: lightblue;
+}
+
+.message {
+ 
+  font-size: 200%;
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10ex;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.success {
+  border-color: green;
+}
+.error {
+  border-color: red;
+}
+
+#identifier {
+  width: 50%;
+}
+/*# sourceMappingURL=styles.css.map */
