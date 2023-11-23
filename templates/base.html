@@ -19,7 +19,7 @@
 
 
   <nav>
-  <p><img src="{{ url_for('static', filename='Xbox.png') }}" /></p>
+  <p><a href="{{ url_for('root') }}"><img src="{{ url_for('static', filename='Xbox.png') }}" /></a></p>
   <p>
   {% if 'user' in session %}
   Uživatel: {{ session['user'] }}. 

@@ -38,12 +38,13 @@ nav ul {
     img{
       max-width: 50%;
       height: auto;
-      margin-bottom: 1em;
-      border-radius: 20;
+      
+      border-radius: 50%;
       border: #bb8800;
       
+      
 
-
+.pokus{}
 
 
     }
@@ -101,3 +102,18 @@ footer {
   width: 50%;
 }
 /*# sourceMappingURL=styles.css.map */
+
+section {
+
+  max-width: 800px;
+  margin: 4em auto;
+  text-align: center;
+  padding: 1em;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-size-adjust: 5;
+  border-style: dotted;
+  border-color: #30b93c;
+  
+
+}
