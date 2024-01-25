@@ -14,6 +14,7 @@ from sqlitewrap import SQLite
 from sqlite3 import IntegrityError
 
 from werkzeug.security import generate_password_hash, check_password_hash
+import datetime
 
 app = Flask(__name__)
 app.secret_key = b"totoj e zceLa n@@@hodny retezec nejlep os.urandom(24)"
@@ -47,9 +48,24 @@ def info():
     retezec = Markup("<strong>neco</strong>")
     return render_template("info.html", slova=slova, retezec=retezec)
 
+
+
+
+
+
+
 @app.route("/Fortnite/")
 def Fortnite():
     return render_template("Fortnite.html",)
+
+
+
+
+
+
+
+
+
 
 @app.route("/COD/")
 def Cod():
@@ -62,19 +78,55 @@ def Cod():
 
 
 
-@app.route("/admin/", methods=["GET"])
-def admin():
+
+
+
+@app.route("/vzkazy/", methods=["GET"])
+def vzkazy():
     if 'user' not in session:
         flash("Tato stánka je pouze pro příhlášené!")
         return redirect(url_for("login", url=request.path))
     
-    a = request.args.get("a", 0)
-    b = request.args.get("b", 0)
-    try:
-        c = int(a) + int(b)
-    except ValueError:
-        c = "Error"
-    return render_template("admin.html", a=a, b=b, c=c)
+    with SQLite("data.sqlite") as cursor:
+        response = cursor.execute(
+            "SELECT login, body, datetime FROM user JOIN message ON user.id = message.user_id"
+        )
+        response= response.fetchall()[:]
+        print(response)
+    
+    return render_template("vzkazy.html", response =response)
+
+@app.route("/vzkazy/", methods=["POST"])
+def vzkazy_post():
+    if "user" not in session:
+        flash("Tato stánka je pouze pro příhlášené!")
+        return redirect(url_for("login", url=request.path))
+
+    with SQLite("data.sqlite") as cursor:
+        response = cursor.execute(
+            "SELECT id FROM user WHERE login=?", [session["user"]]
+        )
+        response = response.fetchone()
+        user_id = list(response)[0]
+
+    vzkaz = request.form.get("vzkaz")
+    if vzkaz:
+        with SQLite("data.sqlite") as cursor:
+            cursor.execute(
+                "INSERT INTO message (user_id, body, datetime) VALUES (?,?,?)",
+                [user_id, vzkaz, datetime.datetime.now()],
+            )
+    return redirect(url_for("vzkazy"))
+
+
+
+
+
+
+
+
+
+
 
 
 @app.route("/admin/", methods=["POST"])
@@ -105,7 +157,7 @@ def login_post():
 
 
         if response:
-            login,password =response.fetchone()
+            login,password =list(response)
             if check_password_hash(password,heslo):
                 session["user"] = jmeno
                 flash("Jsi přihlášen!", "success")
