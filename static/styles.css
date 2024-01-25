@@ -117,3 +117,28 @@ section {
   
 
 }
+
+.zprava{ 
+  background-color: #30b93c;
+  padding: 1ex;
+  margin: 1ex 0ex 2ex;
+  border-radius: 3px;
+  border-color: aqua, 5px;
+
+
+}
+
+.zprava .telo{
+
+margin-left: 4ex;
+
+
+
+}
+.zprava .hlavicka{
+
+text-align: right;
+
+
+
+}

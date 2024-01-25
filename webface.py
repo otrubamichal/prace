@@ -89,12 +89,14 @@ def vzkazy():
     
     with SQLite("data.sqlite") as cursor:
         response = cursor.execute(
-            "SELECT login, body, datetime FROM user JOIN message ON user.id = message.user_id"
+            "SELECT login, body, datetime, message.id FROM user JOIN message "
+            "  ON user.id = message.user_id "
+            "  ORDER BY datetime DESC"
         )
         response= response.fetchall()[:]
         print(response)
     
-    return render_template("vzkazy.html", response =response)
+    return render_template("vzkazy.html", response =response, d=datetime.datetime)
 
 @app.route("/vzkazy/", methods=["POST"])
 def vzkazy_post():
@@ -113,7 +115,7 @@ def vzkazy_post():
     if vzkaz:
         with SQLite("data.sqlite") as cursor:
             cursor.execute(
-                "INSERT INTO message (user_id, body, datetime) VALUES (?,?,?)",
+                "INSERT INTO message (user_id, body, datetime,) VALUES (?,?,?)",
                 [user_id, vzkaz, datetime.datetime.now()],
             )
     return redirect(url_for("vzkazy"))
